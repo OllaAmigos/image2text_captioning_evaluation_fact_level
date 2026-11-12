@@ -1,0 +1,16 @@
+# Example acceptance gates and working thresholds. Tune per dataset / training stage.
+# Conclusions for pretrain data must not be transferred to SFT data and vice versa.
+acceptance_gates:
+  caption_overall:  {precision: 0.95, recall: 0.80}
+  text_on_image:    {precision: 1.00, recall: 1.00}
+working_thresholds:        # used only for the GOOD/BAD split in reports
+  precision_min: 0.85
+  recall_min: 0.50
+  critical_wrong_allowed: false
+weights:
+  importance: {critical: 5, important: 3, minor: 1}
+  verdict:    {full: 1.0, partial: 0.5, wrong: 0.0, missing: 0.0}
+fact_extraction_gates:
+  span_ok_min: 0.98
+  content_word_coverage_min: 0.90
+  near_duplicates_max: 0.05
